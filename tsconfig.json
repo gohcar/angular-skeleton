@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "baseUrl": "codegen"
+  },
+  "exclude": [
+    "node_modules",
+    "src"
+  ],
+  "angularCompilerOptions": {
+   "genDir": ".",
+   "skipMetadataEmit" : true
+ }
+}

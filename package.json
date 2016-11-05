@@ -1,0 +1,57 @@
+{
+  "name": "angular2-skeleton",
+  "description": "Basic angular 2 skeleton, supporting production distributions, AOT compilation and lazy load",
+  "version": "0.0.1",
+  "author": "Santiago H. Cardona",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santherrerac/angular2-skeleton-skeleton.git"
+  },
+  "bugs": {
+    "url": "https://github.com/santherrerac/angular2-skeleton/issues"
+  },
+  "homepage": "https://github.com/santherrerac/angular2-skeleton#readme",
+   "keywords": [
+    "angular2",
+    "webpack",
+    "skeleton",
+    "starter",
+    "AOT"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "rimraf": "rimraf",
+    "webpack": "webpack",
+    "ngc": "ngc",
+    "clean": "rimraf -- node_modules dist",
+    "clean:codegen": "rimraf -- codegen",
+    "codegen": "rimraf -- codegen && cp -r src/. codegen",
+    "compile": "npm run codegen && npm run ngc",
+    "bundle": "rimraf -- dist && webpack",
+    "bundle:prod": "rimraf -- dist && webpack",
+    "build": "npm run compile && npm run bundle && npm run clean:codegen",
+    "build:prod": "npm run compile && npm run bundle:prod && npm run clean:codegen"
+  },
+  "dependencies": {
+    "@angular/common": "2.1.0",
+    "@angular/compiler": "2.1.0",
+    "@angular/compiler-cli": "2.1.0",
+    "@angular/core": "2.1.0",
+    "@angular/forms": "2.1.0",
+    "@angular/http": "2.1.0",
+    "@angular/platform-browser": "2.1.0",
+    "@angular/platform-browser-dynamic": "2.1.0",
+    "@angular/platform-server": "2.1.0",
+    "@angular/router": "3.1.0",
+    "core-js": "2.4.1",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "0.6.25"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "rimraf": "2.5.4",
+    "typescript": "2.0.3",
+    "webpack": "2.1.0-beta.25"
+  }
+}
