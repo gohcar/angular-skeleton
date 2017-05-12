@@ -49,7 +49,7 @@
     "zone.js": "0.6.25"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
+    "@types/core-js": "0.9.34",
     "rimraf": "2.5.4",
     "typescript": "2.0.3",
     "webpack": "2.1.0-beta.25"
