@@ -1,7 +1,7 @@
-const webpack = require("webpack");
-const EVENT   = process.env.npm_lifecycle_event;
-const AOT     = true;
-const PROD    = EVENT.includes('prod');
+const webpack     = require("webpack");
+const EVENT       = process.env.npm_lifecycle_event;
+const PROD        = EVENT.includes('prod');
+const PUBLIC_PATH = 'angular-skeleton';
 
 const CONSTANTS = 
 {
@@ -19,7 +19,13 @@ const config = {};
 
 config.entry = 
 {
-  'polyfills': ['core-js/es6', 'core-js/es7/reflect', 'core-js/client/shim', 'zone.js/dist/zone']
+  'polyfills': 
+  [
+    'core-js/es6', 
+    'core-js/es7/reflect', 
+    'core-js/client/shim', 
+    'zone.js/dist/zone'
+  ]
 };
 
 for (key in modules)
@@ -31,8 +37,8 @@ for (key in modules)
 
 config.output = 
 {
-  path: './dist',
-  publicPath: 'angular2-skeleton/dist/',
+  path: __dirname+'/dist',
+  publicPath: PUBLIC_PATH+'/dist/',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js'    
 };
@@ -59,7 +65,7 @@ config.module =
 
 config.plugins = 
 [
-  new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/, __dirname),
+  new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)@angular/, __dirname),
   new webpack.DefinePlugin(CONSTANTS),
   new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', chunks: chunks})
 ];
@@ -67,18 +73,13 @@ config.plugins =
 if (PROD) 
 {
   config.plugins.push(
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(
     {
       beautify: false,
       comments: false
     })
   );
-}
-
-config.stats= 
-{
-  exclude: ["codegen", "node_modules"]
 }
 
 console.log(PROD? 'PRODUCTION BUILD': 'DEVELOPMENT BUILD');

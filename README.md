@@ -1,9 +1,9 @@
-# Angular 2 skeleton  
+# Angular skeleton  
 
 ## Installation
 
-    git clone https://github.com/santherrerac/angular2-skeleton.git
-    cd angular2-skeleton
+    git clone git@github.com:santiagohecar/angular-skeleton.git
+    cd angular-skeleton
     npm install
 
 ## Build
