@@ -11,5 +11,5 @@
     npm run build:prod 
 
 ## License
-Copyright &copy; 2016 [Santiago H. Cardona](https://github.com/santherrerac).
+Copyright &copy; 2017 [Santiago H. Cardona](https://github.com/santherrerac).
 Licensed under the [MIT License](LICENSE).
