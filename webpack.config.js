@@ -3,18 +3,11 @@ const EVENT       = process.env.npm_lifecycle_event;
 const PROD        = EVENT.includes('prod');
 const PUBLIC_PATH = 'angular-skeleton';
 
-const CONSTANTS = 
+const CONSTANTS   = 
 {
   ENV: PROD? JSON.stringify('production'): JSON.stringify('development')
 };
 
-const modules = 
-{
-  'example': 'example/bootstrap',
-  'child':   'example/child/bootstrap',
-}
-
-var chunks   = [];
 const config = {};
 
 config.entry = 
@@ -25,15 +18,19 @@ config.entry =
     'core-js/es7/reflect', 
     'core-js/client/shim', 
     'zone.js/dist/zone'
-  ]
+  ],
+  'vendor': 
+  [
+    '@angular/platform-browser',
+    '@angular/core', 
+    '@angular/common',
+    '@angular/http',
+    '@angular/router',
+    'rxjs'
+  ],
+  'example': 'example/bootstrap.js',
+  'child':   'example/child/bootstrap.js',
 };
-
-for (key in modules)
-{
-  var value = modules[key];
-  config.entry[key] = './codegen/'+value+'.js';
-  chunks.push(key);
-}
 
 config.output = 
 {
@@ -67,8 +64,14 @@ config.plugins =
 [
   new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)@angular/, __dirname),
   new webpack.DefinePlugin(CONSTANTS),
-  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', chunks: chunks})
+  new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'] })
 ];
+
+config.stats = 
+{
+  maxModules: 0
+};
+
 
 if (PROD) 
 {
@@ -82,6 +85,6 @@ if (PROD)
   );
 }
 
-console.log(PROD? 'PRODUCTION BUILD': 'DEVELOPMENT BUILD');
+console.log("Bundling("+(PROD? 'Production': 'Development')+")...\n");
 
 module.exports = config;

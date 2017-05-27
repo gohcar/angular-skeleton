@@ -1,7 +1,7 @@
 {
   "name": "angular-skeleton",
   "description": "Basic angular skeleton, supporting production distributions, AOT compilation and lazy load",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Santiago H. Cardona",
   "license": "MIT",
   "repository": {
@@ -20,18 +20,9 @@
     "AOT"
   ],
   "scripts": {
-    "tsc": "tsc",
-    "rimraf": "rimraf",
-    "webpack": "webpack",
-    "ngc": "ngc",
-    "clean": "rimraf -- node_modules dist",
-    "clean:codegen": "rimraf -- codegen",
-    "codegen": "rimraf -- codegen && cp -r src/. codegen",
-    "compile": "npm run codegen && npm run ngc",
-    "bundle": "rimraf -- dist && webpack",
-    "bundle:prod": "rimraf -- dist && webpack",
-    "build": "npm run compile && npm run bundle && npm run clean:codegen",
-    "build:prod": "npm run compile && npm run bundle:prod && npm run clean:codegen"
+    "clean": "rimraf node_modules dist && npm cache clean",
+    "build": "rimraf codegen dist && cp -r src/. codegen && echo \"Running AOT compilation...\" && ngc && webpack && rimraf codegen",
+    "build:prod": "rimraf codegen dist && cp -r src/. codegen && echo \"Running AOT compilation...\" && ngc && webpack && rimraf codegen"
   },
   "dependencies": {
     "@angular/common": "4.1.3",
