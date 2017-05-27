@@ -1,10 +1,4 @@
-import { enableProdMode }    from '@angular/core';
-import { platformBrowser }   from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ExampleModule } from './example.module';
 
-import { ExampleModuleNgFactory } from './example.module.ngfactory';
-
-declare var ENV:string;
-
-if ('production' === ENV) enableProdMode();
-
-platformBrowser().bootstrapModuleFactory(ExampleModuleNgFactory);
+platformBrowserDynamic().bootstrapModule(ExampleModule);

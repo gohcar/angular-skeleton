@@ -1,6 +1,4 @@
-import { enableProdMode }    from '@angular/core';
-import { platformBrowser }   from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ChildModule }            from './child.module';
 
-import { ChildModuleNgFactory } from './child.module.ngfactory';
-
-platformBrowser().bootstrapModuleFactory(ChildModuleNgFactory).catch((e) => console.log(e));
+platformBrowserDynamic().bootstrapModule(ChildModule);
