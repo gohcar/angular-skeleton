@@ -20,11 +20,11 @@
     "AOT"
   ],
   "scripts": {
-    "ngc":"ngc",
+    "ngc": "ngc -p tsconfig.aot.json",
     "clean": "rimraf node_modules dist && npm cache clean",
     "clean-install": "npm run clean && npm install",
     "build": "rimraf dist && webpack",
-    "build:prod": "rimraf codegen dist && cp -r src/. codegen && echo \"Running AOT compilation...\" && ngc -p tsconfig.aot.json && webpack && rimraf codegen",
+    "build:prod": "rimraf dist && webpack",
     "build:watch": "webpack-dev-server --progress",
     "start": "npm run build:watch"
   },
@@ -43,6 +43,7 @@
     "zone.js": "0.8.11"
   },
   "devDependencies": {
+    "@ngtools/webpack": "1.3.3",
     "@types/core-js": "0.9.41",
     "@types/node": "7.0.22",
     "angular-router-loader": "^0.6.0",
