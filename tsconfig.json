@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,    
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "sourceMap": false,
     "lib": ["es2015", "dom"]
   },
   "exclude": [
     "node_modules",
     "**/*.aot.ts"
   ],
-  "compileOnSave": false,
-  "buildOnSave": false,
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
     "useWebpackText": true
