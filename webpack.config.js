@@ -12,7 +12,8 @@ config.entry =
     'core-js/es6', 
     'core-js/es7/reflect', 
     'core-js/client/shim', 
-    'zone.js/dist/zone'
+    'zone.js/dist/zone',
+    './webpack.init.js',
   ],
   'vendor': 
   [
@@ -22,13 +23,12 @@ config.entry =
     '@angular/http',
     '@angular/router'
   ],
-  'example': 'example/bootstrap.ts'
+  'example': 'example/bootstrap.ts'   
 };
 
 config.output = 
 {
   path: __dirname+'/dist',
-  publicPath: watch? 'http://192.168.40.130:4200/': 'angular-skeleton/dist/',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js'
 };

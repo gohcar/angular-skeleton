@@ -1,0 +1,1 @@
+__webpack_public_path__ = NG_PUBLIC_PATH;
