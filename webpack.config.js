@@ -82,17 +82,21 @@ if (prod)
 config.plugins.push(
   new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)@angular/, __dirname+'/src'),
   new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'] }),
-  new webpack.NoEmitOnErrorsPlugin()
+  new webpack.NoEmitOnErrorsPlugin(),
+  new webpack.DefinePlugin({
+    ENV: prod? JSON.stringify('production'): JSON.stringify('development')
+  })
 );
 
 config.devServer = 
 {
-  // host: "0.0.0.0",
-  host: "192.168.40.130",
+  host: "0.0.0.0",
   port: '4200',
   historyApiFallback: true,
   quiet: true,
-  stats: 'minimal'
+  stats: 'minimal',
+  headers: { "Access-Control-Allow-Origin": "*" },
+  disableHostCheck: true
 };
 
 config.stats = 

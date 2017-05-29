@@ -8,23 +8,20 @@
 </head>
 <body>
 	<example></example>	
-	<br>
-	<br>
-	<child></child>
 	
-	<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 	<!-- Angular setup -->
+	<script src="/angular-skeleton/webpack.loader.js"></script>
 	<script>
-
-		var HOST           = window.location.host.split(':')[0];
-		var NG_WATCH_MODE  = false;
-		var NG_PUBLIC_PATH = NG_WATCH_MODE? 'http://'+HOST+':4200/': '/angular-skeleton/dist/';
-
-		document.write("<script src=\""+NG_PUBLIC_PATH+"polyfills.js\"><\/script>");
-    document.write("<script src=\""+NG_PUBLIC_PATH+"vendor.js\"><\/script>");
-    document.write("<script src=\""+NG_PUBLIC_PATH+"example.js\"><\/script>");
+		
+	WebpackLoader(
+	{
+		distPath: '/angular-skeleton/dist/',
+		files: ["polyfills.js", "vendor.js", "example.js"]
+	});
 
   </script>
+
 </body>
 </html>
