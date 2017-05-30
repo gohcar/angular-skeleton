@@ -1,9 +1,13 @@
-var webpack   = require('webpack');
-var AotPlugin = require('@ngtools/webpack').AotPlugin;
 var event     = process.env.npm_lifecycle_event;
 var watch     = event.includes('watch');
 var prod      = event.includes('prod');
+var webpack   = require('webpack');
+var AotPlugin = require('@ngtools/webpack').AotPlugin;
 var config    = {};
+
+     if (prod)  console.log("> \033[33mPRODUCTION BUILD\033[0m\n");
+else if (watch) console.log("> \033[33mWATCH BUILD\033[0m\n");
+else            console.log("> \033[33mDEVELOPMENT BUILD\033[0m\n");
 
 config.entry = 
 {
@@ -101,8 +105,11 @@ config.devServer =
 
 config.stats = 
 {
-  maxModules: 0
+  maxModules: 0,
+  children: false,
+  version: false,
+  hash: false
 };
 
-console.log("Bundling...\n");
+console.log("Building...");
 module.exports = config;
