@@ -1,7 +1,7 @@
 {
   "name": "angular-skeleton",
   "description": "Basic angular skeleton, supporting production distributions, AOT compilation and lazy load",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "Santiago H. Cardona",
   "license": "MIT",
   "repository": {
@@ -20,9 +20,13 @@
     "AOT"
   ],
   "scripts": {
+    "ngc": "ngc -p tsconfig.aot.json",
     "clean": "rimraf node_modules dist && npm cache clean",
-    "build": "rimraf codegen dist && cp -r src/. codegen && echo \"Running AOT compilation...\" && ngc && webpack && rimraf codegen",
-    "build:prod": "rimraf codegen dist && cp -r src/. codegen && echo \"Running AOT compilation...\" && ngc && webpack && rimraf codegen"
+    "clean-install": "npm run clean && npm install",
+    "build": "rimraf dist && webpack",
+    "build:prod": "rimraf dist && webpack",
+    "build:watch": "webpack-dev-server --progress --public",
+    "start": "npm run build:watch"
   },
   "dependencies": {
     "@angular/common": "4.1.3",
@@ -32,16 +36,23 @@
     "@angular/forms": "4.1.3",
     "@angular/http": "4.1.3",
     "@angular/platform-browser": "4.1.3",
+    "@angular/platform-browser-dynamic": "4.1.3",
     "@angular/router": "4.1.3",
     "core-js": "2.4.1",
     "rxjs": "5.4.0",
     "zone.js": "0.8.11"
   },
   "devDependencies": {
+    "@ngtools/webpack": "1.3.3",
     "@types/core-js": "0.9.41",
     "@types/node": "7.0.22",
+    "angular-router-loader": "^0.6.0",
+    "angular2-template-loader": "0.6.2",
+    "awesome-typescript-loader": "3.1.3",
+    "raw-loader": "0.5.1",
     "rimraf": "2.6.1",
     "typescript": "2.3.3",
-    "webpack": "2.6.1"
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.4.5"
   }
 }

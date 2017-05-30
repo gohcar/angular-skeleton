@@ -8,13 +8,20 @@
 </head>
 <body>
 	<example></example>	
-	<br>
-	<br>
-	<child></child>
 	
-	<script src="/angular-skeleton/dist/polyfills.js"></script>
-	<script src="/angular-skeleton/dist/vendor.js"></script>
-	<script src="/angular-skeleton/dist/example.js"></script>
-	<script src="/angular-skeleton/dist/child.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<!-- Angular setup -->
+	<script src="/angular-skeleton/webpack.loader.js"></script>
+	<script>
+		
+	WebpackLoader(
+	{
+		distPath: '/angular-skeleton/dist/',
+		files: ["polyfills.js", "vendor.js", "example.js"]
+	});
+
+  </script>
+
 </body>
 </html>

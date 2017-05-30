@@ -1,6 +1,8 @@
-import { enableProdMode }    from '@angular/core';
-import { platformBrowser }   from '@angular/platform-browser';
+import { enableProdMode }         from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { LazyTabModule }          from './lazy-tab.module';
 
-import { LazyTabModuleNgFactory } from './lazy-tab.module.ngfactory';
+declare var ENV:string;
 
-platformBrowser().bootstrapModuleFactory(LazyTabModuleNgFactory).catch((e) => console.log(e));
+if ('production' === ENV) enableProdMode();
+platformBrowserDynamic().bootstrapModule(LazyTabModule);

@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
     ([  
       {
         path: 'lazy-tab',
-        loadChildren: 'lazy-tab/lazy-tab.module#LazyTabModule'
+        loadChildren: './lazy-tab/lazy-tab.module#LazyTabModule'
       }
     ])
   ],
