@@ -1,17 +1,17 @@
 {
   "name": "angular-skeleton",
-  "description": "Basic angular skeleton, supporting production distributions, AOT compilation and lazy load",
-  "version": "0.1.0",
+  "description": "Support for development and production environments, AOT compilation, lazy load and live rebuild",
+  "version": "0.0.0",
   "author": "Santiago H. Cardona",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/santherrerac/angular-skeleton-skeleton.git"
+    "url": "git+https://github.com/santiagohecar/angular-skeleton.git"
   },
   "bugs": {
-    "url": "https://github.com/santherrerac/angular-skeleton/issues"
+    "url": "https://github.com/santiagohecar/angular-skeleton/issues"
   },
-  "homepage": "https://github.com/santherrerac/angular-skeleton#readme",
+  "homepage": "https://github.com/santiagohecar/angular-skeleton#readme",
   "keywords": [
     "angular",
     "webpack",
@@ -25,8 +25,9 @@
     "clean-install": "npm run clean && npm install",
     "build": "rimraf dist && webpack",
     "build:prod": "rimraf dist && webpack",
-    "build:watch": "webpack-dev-server --progress --public",
-    "start": "npm run build:watch"
+    "build:watch": "pm2 start webpack-dev-server --name='ng-webpack-server' -- --progress --public",
+    "start": "npm run build:watch",
+    "stop":"pm2 delete ng-webpack-server"
   },
   "dependencies": {
     "@angular/common": "4.3.6",
@@ -45,7 +46,7 @@
   "devDependencies": {
     "@ngtools/webpack": "1.6.2",
     "@types/core-js": "0.9.43",
-    "@types/node": "8.0.25",
+    "@types/node": "8.0.26",
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "0.6.2",
     "awesome-typescript-loader": "3.2.3",
