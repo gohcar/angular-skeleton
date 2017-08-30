@@ -7,7 +7,11 @@
 
 ## Development
     npm run build
-    npm run build:watch 
+    
+Live rebuild
+
+    npm start
+    npm stop
 
 ## Production
     npm run build:prod
