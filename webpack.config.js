@@ -9,43 +9,43 @@ var config    = {};
 else if (watch) console.log("> \033[33mWATCH BUILD\033[0m\n");
 else            console.log("> \033[33mDEVELOPMENT BUILD\033[0m\n");
 
-config.entry = 
+config.entry =
 {
-  'polyfills': 
+  'polyfills':
   [
-    'core-js/es6', 
-    'core-js/es7/reflect', 
-    'core-js/client/shim', 
+    'core-js/es6',
+    'core-js/es7/reflect',
+    'core-js/client/shim',
     'zone.js/dist/zone',
     './webpack.init.js',
   ],
-  'vendor': 
+  'vendor':
   [
     '@angular/platform-browser',
-    '@angular/core', 
+    '@angular/core',
     '@angular/common',
     '@angular/http',
     '@angular/router'
   ],
-  'example': 'example/bootstrap.ts'   
+  'example': 'example/bootstrap.ts'
 };
 
-config.output = 
+config.output =
 {
   path: __dirname+'/dist',
   filename: '[name].js',
   chunkFilename: '[id].chunk.js'
 };
 
-config.resolve = 
+config.resolve =
 {
   modules: ["src", "node_modules"],
   extensions: ['.ts', '.js', '.css', '.html'],
 };
 
-config.module = 
+config.module =
 {
-  rules: 
+  rules:
   [
     {test: /\.css$/,  loader: 'raw-loader'},
     {test: /\.html$/, loader: 'raw-loader'}
@@ -92,7 +92,7 @@ config.plugins.push(
   })
 );
 
-config.devServer = 
+config.devServer =
 {
   host: "0.0.0.0",
   port: '4200',
@@ -103,7 +103,7 @@ config.devServer =
   disableHostCheck: true
 };
 
-config.stats = 
+config.stats =
 {
   maxModules: 0,
   children: false,

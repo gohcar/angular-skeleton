@@ -9,25 +9,25 @@ import { ExampleRoutingModule } from './example-routing.module';
 
 @NgModule
 ({
-  imports: 
+  imports:
   [
     BrowserModule,
     HttpModule,
     ExampleRoutingModule,
     MainTabModule
   ],
-  declarations: 
+  declarations:
   [
     ExampleComponent
   ],
-  providers: 
+  providers:
   [
     {provide: APP_BASE_HREF, useValue: '/'}
   ],
-  bootstrap: 
+  bootstrap:
   [
     ExampleComponent
-  ] 
+  ]
 })
 
 export class ExampleModule {}

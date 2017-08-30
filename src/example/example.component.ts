@@ -3,15 +3,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component
 ({
-  selector: 'example',  
+  selector: 'example',
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.css'],
 })
 
-export class ExampleComponent 
+export class ExampleComponent
 {
 
-  constructor(private router:Router, 
+  constructor(private router:Router,
               private route:ActivatedRoute) {}
 
   go_to(route:string)

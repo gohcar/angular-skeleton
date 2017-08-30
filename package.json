@@ -1,17 +1,17 @@
 {
   "name": "angular-skeleton",
-  "description": "Basic angular skeleton, supporting production distributions, AOT compilation and lazy load",
-  "version": "0.1.0",
+  "description": "Support for development and production environments, AOT compilation, lazy load and live rebuild",
+  "version": "0.0.0",
   "author": "Santiago H. Cardona",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/santherrerac/angular-skeleton-skeleton.git"
+    "url": "git+https://github.com/santiagohecar/angular-skeleton.git"
   },
   "bugs": {
-    "url": "https://github.com/santherrerac/angular-skeleton/issues"
+    "url": "https://github.com/santiagohecar/angular-skeleton/issues"
   },
-  "homepage": "https://github.com/santherrerac/angular-skeleton#readme",
+  "homepage": "https://github.com/santiagohecar/angular-skeleton#readme",
   "keywords": [
     "angular",
     "webpack",
@@ -25,34 +25,35 @@
     "clean-install": "npm run clean && npm install",
     "build": "rimraf dist && webpack",
     "build:prod": "rimraf dist && webpack",
-    "build:watch": "webpack-dev-server --progress --public",
-    "start": "npm run build:watch"
+    "build:watch": "pm2 start webpack-dev-server --name='ng-webpack-server' -- --progress --public",
+    "start": "npm run build:watch",
+    "stop":"pm2 delete ng-webpack-server"
   },
   "dependencies": {
-    "@angular/common": "4.1.3",
-    "@angular/compiler": "4.1.3",
-    "@angular/compiler-cli": "4.1.3",
-    "@angular/core": "4.1.3",
-    "@angular/forms": "4.1.3",
-    "@angular/http": "4.1.3",
-    "@angular/platform-browser": "4.1.3",
-    "@angular/platform-browser-dynamic": "4.1.3",
-    "@angular/router": "4.1.3",
-    "core-js": "2.4.1",
-    "rxjs": "5.4.0",
-    "zone.js": "0.8.11"
+    "@angular/common": "4.3.6",
+    "@angular/compiler": "4.3.6",
+    "@angular/compiler-cli": "4.3.6",
+    "@angular/core": "4.3.6",
+    "@angular/forms": "4.3.6",
+    "@angular/http": "4.3.6",
+    "@angular/platform-browser": "4.3.6",
+    "@angular/platform-browser-dynamic": "4.3.6",
+    "@angular/router": "4.3.6",
+    "core-js": "2.5.0",
+    "rxjs": "5.4.3",
+    "zone.js": "0.8.17"
   },
   "devDependencies": {
-    "@ngtools/webpack": "1.3.3",
-    "@types/core-js": "0.9.41",
-    "@types/node": "7.0.22",
+    "@ngtools/webpack": "1.6.2",
+    "@types/core-js": "0.9.43",
+    "@types/node": "8.0.26",
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "0.6.2",
-    "awesome-typescript-loader": "3.1.3",
+    "awesome-typescript-loader": "3.2.3",
     "raw-loader": "0.5.1",
     "rimraf": "2.6.1",
-    "typescript": "2.3.3",
-    "webpack": "2.6.1",
-    "webpack-dev-server": "2.4.5"
+    "typescript": "2.4.2",
+    "webpack": "3.5.5",
+    "webpack-dev-server": "2.7.1"
   }
 }
