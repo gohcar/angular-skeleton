@@ -4,7 +4,7 @@ function WebpackLoader(config)
   
   if (WebpackLoader.config.watchMode)
   {
-    jQuery.ajax({url: WebpackLoader.config.watchPath+'watch', timeout: 50})
+    jQuery.ajax({url: WebpackLoader.config.watchPath+'watch', timeout: 150})
           .fail(function() { WebpackLoader.config.watchMode = false; })
           .always(WebpackLoader.load);
   } 
