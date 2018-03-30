@@ -1,41 +1,48 @@
 function WebpackLoader(config)
 {
-  jQuery.extend(WebpackLoader.config, config);
-  
-  if (WebpackLoader.config.watchMode)
-  {
-    jQuery.ajax({url: WebpackLoader.config.watchPath+'watch', timeout: 50})
-          .fail(function() { WebpackLoader.config.watchMode = false; })
-          .always(WebpackLoader.load);
-  } 
-  else WebpackLoader.load();
+  WebpackLoader.setConfig(config);  
+  WebpackLoader.loadJs();
 }
 
 
-WebpackLoader.publicPath = "";
-WebpackLoader.config     =
+WebpackLoader.defConfig =
 {
+  production: false,
   watchMode: true,
-  watchPath: 'http://'+window.location.hostname+':4200/',
-  distPath:  'dist/',
+  watchPath: window.location.origin+':4200/',
+  distPath:  '/dist/',
+  publicPath: '',
   files:[]
 }
 
 
-WebpackLoader.load = function()
+WebpackLoader.config = {}
+
+
+WebpackLoader.setConfig = function(usrConfig)
 {
-  WebpackLoader.publicPath = WebpackLoader.config.watchMode? 
-                             WebpackLoader.config.watchPath: WebpackLoader.config.distPath;
-  if (WebpackLoader.config.watchMode) console.log("WebpackLoader watch mode enabled.");
-  WebpackLoader.loadJs(WebpackLoader.config.files);
+  var config = {};
+
+  for (var key in WebpackLoader.defConfig)
+  {
+    config[key] = typeof(usrConfig[key]) != 'undefined'? usrConfig[key]: WebpackLoader.defConfig[key];
+  }
+  
+                          config.watchMode  = config.watchMode && !config.production;              // watch mode disable for production  
+  if (!config.publicPath) config.publicPath = config.watchMode? config.watchPath: config.distPath; // set public path
+  if (config.watchMode)   console.log("WebpackLoader watch mode enabled.");
+
+  WebpackLoader.config = config;
 }
 
 
-WebpackLoader.loadJs = function(src, i)
+WebpackLoader.loadJs = function(i)
 {
-  i = i || 0; if (i >= src.length) return;
-  var script = document.createElement('script');
-  script.src = WebpackLoader.publicPath+src[i];
-  script.onload = function () { WebpackLoader.loadJs(src, i+1); }
+  if ((i = i || 0) >= WebpackLoader.config.files.length) return;
+
+  var script        = document.createElement('script');
+      script.src    = WebpackLoader.config.publicPath + WebpackLoader.config.files[i];
+      script.onload = function () { WebpackLoader.loadJs(i + 1); }
+
   document.body.appendChild(script);
 }

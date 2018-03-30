@@ -1,1 +1,1 @@
-__webpack_public_path__ = WebpackLoader.publicPath;
+__webpack_public_path__ = WebpackLoader.config.publicPath;

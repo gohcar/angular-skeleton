@@ -8,8 +8,6 @@
 </head>
 <body>
 	<example></example>	
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 	<!-- Angular setup -->
 	<script src="/angular-skeleton/webpack.loader.js"></script>
@@ -17,8 +15,11 @@
 		
 	WebpackLoader(
 	{
-		distPath: '/angular-skeleton/dist/',
-		files: ["polyfills.js", "vendor.js", "example.js"]
+		// set next for productions enviroments
+		// production: true,
+		// distPath: window.location.pathname+'/dist/',	
+
+		files: ["polyfills.js", "vendor.js", "example.js"]			
 	});
 
   </script>
