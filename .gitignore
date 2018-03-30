@@ -4,3 +4,4 @@ Session.vim
 .undodir/
 *.swp
 *.un~
+npm-debug.log

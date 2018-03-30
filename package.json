@@ -2,7 +2,7 @@
   "name": "angular-skeleton",
   "description": "Support for development and production environments, AOT compilation, lazy load and live rebuild",
   "version": "0.0.0",
-  "author": "Santiago H. Cardona",
+  "author": "Santiago Herrera Cardona",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,13 +21,15 @@
   ],
   "scripts": {    
     "start": "npm run build:watch",
-    "stop":"pm2 delete ng-webpack-server",
+    "status": "pm2 list",
+    "logs": "pm2 logs",
+    "stop":"pm2 delete webpack-dev-server",
     "build": "npm run build:prod",  
     "build:prod": "rimraf dist && webpack",
     "build:dev": "rimraf dist && webpack",
-    "build:watch": "pm2 start webpack-dev-server --name='ng-webpack-server' -- --progress --public",
+    "build:watch": "pm2 start webpack-dev-server -- --progress --public && pm2 logs",
     "clean": "rimraf node_modules dist && npm cache clean",
-    "clean-install": "npm run clean && npm install"    
+    "clean-install": "npm run clean && npm install"
   },
   "dependencies": {
     "@angular/common": "5.2.9",
