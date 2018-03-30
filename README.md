@@ -18,5 +18,5 @@ Or
     npm run build
 
 ## License
-Copyright &copy; 2017 [Santiago Herrera Cardona](https://github.com/santiagohecar).
+Copyright &copy; 2016-2018 [Santiago Herrera Cardona](https://github.com/santiagohecar).
 Licensed under the [MIT License](LICENSE).
