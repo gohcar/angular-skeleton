@@ -19,15 +19,15 @@
     "starter",
     "AOT"
   ],
-  "scripts": {
-    "ngc": "ngc -p tsconfig.aot.json",
-    "clean": "rimraf node_modules dist && npm cache clean",
-    "clean-install": "npm run clean && npm install",
-    "build": "rimraf dist && webpack",
-    "build:prod": "rimraf dist && webpack",
-    "build:watch": "pm2 start webpack-dev-server --name='ng-webpack-server' -- --progress --public",
+  "scripts": {    
     "start": "npm run build:watch",
-    "stop":"pm2 delete ng-webpack-server"
+    "stop":"pm2 delete ng-webpack-server",
+    "build": "npm run build:prod",  
+    "build:prod": "rimraf dist && webpack",
+    "build:dev": "rimraf dist && webpack",
+    "build:watch": "pm2 start webpack-dev-server --name='ng-webpack-server' -- --progress --public",
+    "clean": "rimraf node_modules dist && npm cache clean",
+    "clean-install": "npm run clean && npm install"    
   },
   "dependencies": {
     "@angular/common": "5.2.9",
@@ -41,9 +41,7 @@
     "@angular/router": "5.2.9",
     "core-js": "2.5.4",
     "rxjs": "5.5.8",
-    "zone.js": "0.8.20"
-  },
-  "devDependencies": {
+    "zone.js": "0.8.20",
     "@ngtools/webpack": "6.0.0-beta.8",
     "@types/core-js": "0.9.46",
     "@types/node": "9.6.1",
@@ -56,6 +54,7 @@
     "webpack": "4.4.1",
     "webpack-dev-server": "3.1.1",
     "webpack-cli": "2.0.13",
-    "@angular-devkit/core": "0.4.8"
+    "@angular-devkit/core": "0.4.8",
+    "pm2":"2.10.2"
   }
 }

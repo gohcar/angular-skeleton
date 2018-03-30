@@ -3,7 +3,7 @@ var watch     = event.includes('watch');
 var prod      = event.includes('prod');
 var webpack   = require('webpack');
 var path      = require('path');
-var AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;//.AotPlugin;
+var AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 var config    = {};
 
      if (prod)  console.log("> \033[33mPRODUCTION BUILD\033[0m\n");
